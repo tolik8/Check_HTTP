@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  Menus, Process, IniFiles;
+  Menus, Process, IniFiles, MMSystem;
 
 type
 
@@ -40,7 +40,7 @@ type
   private
 
   public
-    StartDir, ConfigFile, URL: String;
+    StartDir, ConfigFile, URL, SoundFile: String;
     icon1, icon2: TIcon;
     IsAllowFormClose, IsChangeColor: Boolean;
   end;
@@ -66,6 +66,7 @@ begin
 
   ini := TIniFile.Create(ConfigFile);
   Timer1.Interval := ini.ReadInteger('Main', 'Interval', 5) * 1000 * 60;
+  SoundFile := ini.ReadString('Main', 'Sound', 'C:\Windows\Media\tada.wav');
   ini.Free;
   IsAllowFormClose := False;
   icon1 := TIcon.Create;
@@ -153,6 +154,7 @@ begin
          end else begin
            Timer2.Enabled := True;
            TrayIcon1.Icon.LoadFromFile(StartDir + 'icons\0.ico');
+           PlaySound(PChar(SoundFile), 0, SND_ASYNC);
          end;
     except
       on E: Exception do
