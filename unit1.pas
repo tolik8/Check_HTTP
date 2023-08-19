@@ -36,7 +36,6 @@ type
     procedure Timer1Timer(Sender: TObject);
     procedure Timer2Timer(Sender: TObject);
     procedure TrayIcon1Click(Sender: TObject);
-    procedure TrayIcon1MouseUp(Sender: TObject; Button: TMouseButton);
   private
 
   public
@@ -106,11 +105,6 @@ end;
 procedure TForm1.TrayIcon1Click(Sender: TObject);
 begin
   Show;
-end;
-
-procedure TForm1.TrayIcon1MouseUp(Sender: TObject; Button: TMouseButton);
-begin
-  if Button = mbRight then PopupMenu1.PopUp;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);

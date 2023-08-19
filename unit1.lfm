@@ -252,7 +252,6 @@ object Form1: TForm1
     Hint = 'Check HTTP'
     Visible = True
     OnClick = TrayIcon1Click
-    OnMouseUp = TrayIcon1MouseUp
     Left = 264
     Top = 96
   end
